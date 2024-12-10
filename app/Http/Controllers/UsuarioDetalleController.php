@@ -7,7 +7,7 @@ use App\Models\UsuarioDetalle;
 
 /**
  * @OA\Info(
- *     title="API Usuario Detalle",
+ *     title="End Points para los datos de Excel",
  *     version="1.0.0",
  *     description="API para gestionar detalles de usuarios"
  * )
@@ -16,7 +16,7 @@ class UsuarioDetalleController extends Controller
 {
     /**
      * @OA\Post(
-     *     path="/api/usuarios-detalles",
+     *     path="/api/usuarios-detalles/",
      *     summary="Insertar un nuevo UsuarioDetalle",
      *     tags={"UsuarioDetalle"},
      *     @OA\RequestBody(
