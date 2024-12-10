@@ -1,0 +1,284 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Usuario Detalle",
+        "description": "API para gestionar detalles de usuarios",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/usuarios-detalles": {
+            "get": {
+                "tags": [
+                    "UsuarioDetalle"
+                ],
+                "summary": "Obtener todos los registros de UsuarioDetalle",
+                "operationId": "c87b686410b231ec182a389400dbab73",
+                "responses": {
+                    "200": {
+                        "description": "Lista de UsuarioDetalle",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UsuarioDetalle"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "UsuarioDetalle"
+                ],
+                "summary": "Insertar un nuevo UsuarioDetalle",
+                "operationId": "22ab9de92e54012ef370d209681e0e44",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "usuario",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "usuario": {
+                                        "description": "Nombre del usuario",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Correo electrónico del usuario",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "cargo": {
+                                        "description": "Cargo del usuario",
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "description": "Teléfono del usuario",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "UsuarioDetalle creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "ID del UsuarioDetalle",
+                                            "type": "integer"
+                                        },
+                                        "usuario": {
+                                            "description": "Nombre del usuario",
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "description": "Correo electrónico del usuario",
+                                            "type": "string"
+                                        },
+                                        "cargo": {
+                                            "description": "Cargo del usuario",
+                                            "type": "string"
+                                        },
+                                        "telefono": {
+                                            "description": "Teléfono del usuario",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/usuarios-detalles/{id}": {
+            "get": {
+                "tags": [
+                    "UsuarioDetalle"
+                ],
+                "summary": "Obtener un UsuarioDetalle por su ID",
+                "operationId": "134ee8cfa0924f8f17a9016f1caa80ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del UsuarioDetalle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UsuarioDetalle encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UsuarioDetalle"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "UsuarioDetalle"
+                ],
+                "summary": "Actualizar un UsuarioDetalle existente",
+                "operationId": "59c2a7356f90b6c64be1ef1c8b719cd1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del UsuarioDetalle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "usuario": {
+                                        "description": "Nombre del usuario",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Correo electrónico del usuario",
+                                        "type": "string"
+                                    },
+                                    "cargo": {
+                                        "description": "Cargo del usuario",
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "description": "Teléfono del usuario",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "UsuarioDetalle actualizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UsuarioDetalle"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "UsuarioDetalle"
+                ],
+                "summary": "Eliminar un UsuarioDetalle por su ID",
+                "operationId": "6cb4a09df42af788addc7c5f2b6a9c43",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del UsuarioDetalle",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UsuarioDetalle eliminado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "UsuarioDetalle eliminado exitosamente"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UsuarioDetalle": {
+                "required": [
+                    "usuario",
+                    "email"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID del UsuarioDetalle",
+                        "type": "integer"
+                    },
+                    "usuario": {
+                        "description": "Nombre del usuario",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Correo electrónico del usuario",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "cargo": {
+                        "description": "Cargo del usuario",
+                        "type": "string"
+                    },
+                    "telefono": {
+                        "description": "Teléfono del usuario",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Fecha de creación",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Fecha de última actualización",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "UsuarioDetalle",
+            "description": "UsuarioDetalle"
+        }
+    ]
+}
