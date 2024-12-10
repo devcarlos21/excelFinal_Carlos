@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UsuarioDetalle;
 
+// use App\Models\DatosArchivo;
+// use App\Models\Coordenada;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
+
 /**
  * @OA\Info(
  *     title="End Points para los datos de Excel",
@@ -173,4 +179,45 @@ class UsuarioDetalleController extends Controller
 
         return response()->json(['message' => 'UsuarioDetalle eliminado exitosamente']);
     }
+
+
+
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls'
+        ]);
+
+        $file = $request->file('file');
+
+        try {
+            // Cargar el archivo Excel
+            $spreadsheet = IOFactory::load($file->getPathname());
+            $sheet = $spreadsheet->getActiveSheet();
+
+            // Leer celdas específicas
+            $usuario = $sheet->getCell('F4')->getValue();
+            $email = $sheet->getCell('E7')->getValue();
+            $cargo = $sheet->getCell('G9')->getValue();
+            $telefono = $sheet->getCell('C19')->getValue();
+
+            // Guardar en la base de datos
+            UsuarioDetalle::create([
+                'usuario' => $usuario,
+                'email' => $email,
+                'cargo' => $cargo,
+                'telefono' => $telefono,
+            ]);
+
+            return response()->json([
+                'message' => 'Datos importados correctamente',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error al procesar el archivo',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
 }
