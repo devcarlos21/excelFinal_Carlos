@@ -15,13 +15,14 @@ Route::get('/user', function (Request $request) {
 
 // Route::post('/insertUser', [TestController::class,'insertUser']);
 
+//Hola este es un comentario
 
 Route::prefix('usuarios-detalles')->group(function () {
-    Route::get('/', [UsuarioDetalleController::class, 'obtenerUsuariosDetalles']);
-    Route::post('/', [UsuarioDetalleController::class, 'insertarUsuarioDetalle']);
-    Route::get('/{id}', [UsuarioDetalleController::class, 'obtenerUsuarioDetalle']);
-    Route::put('/{id}', [UsuarioDetalleController::class, 'actualizarUsuarioDetalle']);
-    Route::delete('/{id}', [UsuarioDetalleController::class, 'eliminarUsuarioDetalle']);
+    Route::get('/getUsers', [UsuarioDetalleController::class, 'obtenerUsuariosDetalles']);
+    Route::post('/insertUser', [UsuarioDetalleController::class, 'insertarUsuarioDetalle']);
+    Route::get('/getUser/{id}', [UsuarioDetalleController::class, 'obtenerUsuarioDetalle']);
+    Route::put('/updateUser/{id}', [UsuarioDetalleController::class, 'actualizarUsuarioDetalle']);
+    Route::delete('/deleteUser/{id}', [UsuarioDetalleController::class, 'eliminarUsuarioDetalle']);
 });
 
 

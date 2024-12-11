@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
  * @OA\Info(
  *     title="End Points para los datos de Excel",
  *     version="1.0.0",
- *     description="API para gestionar detalles de usuarios"
+ *     description="End Points de los datos ingresados por archivos de excel"
  * )
  */
 class UsuarioDetalleController extends Controller
@@ -23,7 +23,7 @@ class UsuarioDetalleController extends Controller
     /**
      * @OA\Post(
      *     path="/api/usuarios-detalles/",
-     *     summary="Insertar un nuevo UsuarioDetalle",
+     *     summary="Insertar un nuevo usuario",
      *     tags={"UsuarioDetalle"},
      *     @OA\RequestBody(
      *         required=true,
@@ -37,7 +37,7 @@ class UsuarioDetalleController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="UsuarioDetalle creado exitosamente",
+     *         description="Usuario creado exitosamente",
      *         @OA\JsonContent(
      *             @OA\Property(property="id", type="integer", description="ID del UsuarioDetalle"),
      *             @OA\Property(property="usuario", type="string", description="Nombre del usuario"),
@@ -65,11 +65,11 @@ class UsuarioDetalleController extends Controller
     /**
      * @OA\Get(
      *     path="/api/usuarios-detalles",
-     *     summary="Obtener todos los registros de UsuarioDetalle",
+     *     summary="Obtener todos los usuarios registrados",
      *     tags={"UsuarioDetalle"},
      *     @OA\Response(
      *         response=200,
-     *         description="Lista de UsuarioDetalle",
+     *         description="Usuarios en la base de datos",
      *         @OA\JsonContent(
      *             type="array",
      *             @OA\Items(ref="#/components/schemas/UsuarioDetalle")
@@ -85,18 +85,18 @@ class UsuarioDetalleController extends Controller
     /**
      * @OA\Get(
      *     path="/api/usuarios-detalles/{id}",
-     *     summary="Obtener un UsuarioDetalle por su ID",
+     *     summary="Obtener solor un usuario especificando su ID",
      *     tags={"UsuarioDetalle"},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer"),
-     *         description="ID del UsuarioDetalle"
+     *         description="ID del usuario"
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="UsuarioDetalle encontrado",
+     *         description="Usuario encontrado",
      *         @OA\JsonContent(ref="#/components/schemas/UsuarioDetalle")
      *     )
      * )
@@ -110,14 +110,14 @@ class UsuarioDetalleController extends Controller
     /**
      * @OA\Put(
      *     path="/api/usuarios-detalles/{id}",
-     *     summary="Actualizar un UsuarioDetalle existente",
+     *     summary="Actualizar un usuario que ya existe",
      *     tags={"UsuarioDetalle"},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer"),
-     *         description="ID del UsuarioDetalle"
+     *         description="ID del usuario"
      *     ),
      *     @OA\RequestBody(
      *         required=true,
@@ -130,7 +130,7 @@ class UsuarioDetalleController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="UsuarioDetalle actualizado",
+     *         description="Usuario actualizado",
      *         @OA\JsonContent(ref="#/components/schemas/UsuarioDetalle")
      *     )
      * )
@@ -154,18 +154,18 @@ class UsuarioDetalleController extends Controller
     /**
      * @OA\Delete(
      *     path="/api/usuarios-detalles/{id}",
-     *     summary="Eliminar un UsuarioDetalle por su ID",
+     *     summary="Eliminar un usuario especificando su ID",
      *     tags={"UsuarioDetalle"},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
      *         @OA\Schema(type="integer"),
-     *         description="ID del UsuarioDetalle"
+     *         description="ID del usuario"
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="UsuarioDetalle eliminado",
+     *         description="Usuario eliminado",
      *         @OA\JsonContent(
      *             @OA\Property(property="message", type="string", example="UsuarioDetalle eliminado exitosamente")
      *         )
@@ -196,9 +196,9 @@ class UsuarioDetalleController extends Controller
             $sheet = $spreadsheet->getActiveSheet();
 
             // Leer celdas específicas
-            $usuario = $sheet->getCell('F4')->getValue();
+            $usuario = $sheet->getCell('C3')->getValue();
             $email = $sheet->getCell('E7')->getValue();
-            $cargo = $sheet->getCell('G9')->getValue();
+            $cargo = $sheet->getCell('H18')->getValue();
             $telefono = $sheet->getCell('C19')->getValue();
 
             // Guardar en la base de datos

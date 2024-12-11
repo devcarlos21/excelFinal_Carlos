@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 /**
  * @OA\Schema(
- *     schema="UsuarioDetalle",
+ *     schema="Información de Usuarios",
  *     type="object",
  *     required={"usuario", "email"},
  *     @OA\Property(property="id", type="integer", description="ID del UsuarioDetalle"),
