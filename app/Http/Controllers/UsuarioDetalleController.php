@@ -13,9 +13,9 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 /**
  * @OA\Info(
- *     title="End Points para los datos de Excel",
+ *     title="End Points de Usuarios",
  *     version="1.0.0",
- *     description="End Points de los datos ingresados por archivos de excel"
+ *     description="Datos extraidos de archivos excel"
  * )
  */
 class UsuarioDetalleController extends Controller
@@ -196,10 +196,10 @@ class UsuarioDetalleController extends Controller
             $sheet = $spreadsheet->getActiveSheet();
 
             // Leer celdas específicas
-            $usuario = $sheet->getCell('C3')->getValue();
-            $email = $sheet->getCell('E7')->getValue();
-            $cargo = $sheet->getCell('H18')->getValue();
-            $telefono = $sheet->getCell('C19')->getValue();
+            $usuario = $sheet->getCell('A6')->getValue(); // A6
+            $email = $sheet->getCell('I11')->getValue(); // I11
+            $cargo = $sheet->getCell('G14')->getValue(); // 
+            $telefono = $sheet->getCell('E3')->getValue(); //
 
             // Guardar en la base de datos
             UsuarioDetalle::create([
